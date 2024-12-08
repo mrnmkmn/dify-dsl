@@ -1,0 +1,681 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: てすと２
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.4
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - video
+      - audio
+      - image
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: 'ファイルを添付して文字起こしするには、文字起こし対象のファイルを添付の上、「文字起こし」と入力してください。
+
+
+      ※ドキュメント、画像、音声、動画（.m4aのみ）以外のファイル形式はサポート外です'
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: iteration-start
+        targetType: if-else
+      id: 1733462204823start-source-1733462303828-target
+      selected: false
+      source: 1733462204823start
+      sourceHandle: source
+      target: '1733462303828'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: if-else
+        targetType: llm
+      id: 1733462303828-true-1733462421307-target
+      selected: false
+      source: '1733462303828'
+      sourceHandle: 'true'
+      target: '1733462421307'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1733462303828-0df6a8bd-3b34-4866-b33d-8d74893cc053-1733462449509-target
+      selected: false
+      source: '1733462303828'
+      sourceHandle: 0df6a8bd-3b34-4866-b33d-8d74893cc053
+      target: '1733462449509'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: if-else
+        targetType: tool
+      id: 1733462303828-03c190a7-0863-460b-9ecc-1462cb05f40b-1733462502080-target
+      selected: false
+      source: '1733462303828'
+      sourceHandle: 03c190a7-0863-460b-9ecc-1462cb05f40b
+      target: '1733462502080'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: if-else
+        targetType: template-transform
+      id: 1733462303828-false-1733462555556-target
+      selected: false
+      source: '1733462303828'
+      sourceHandle: 'false'
+      target: '1733462555556'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1733462421307-source-1733462697092-target
+      selected: false
+      source: '1733462421307'
+      sourceHandle: source
+      target: '1733462697092'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: document-extractor
+        targetType: variable-aggregator
+      id: 1733462449509-source-1733462697092-target
+      selected: false
+      source: '1733462449509'
+      sourceHandle: source
+      target: '1733462697092'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1733462502080-source-1733462697092-target
+      selected: false
+      source: '1733462502080'
+      sourceHandle: source
+      target: '1733462697092'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1733462555556-source-1733462697092-target
+      selected: false
+      source: '1733462555556'
+      sourceHandle: source
+      target: '1733462697092'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1733462204823-source-1733462787576-target
+      selected: false
+      source: '1733462204823'
+      sourceHandle: source
+      target: '1733462787576'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1733462787576-source-answer-target
+      selected: false
+      source: '1733462787576'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1733462204823'
+        sourceType: if-else
+        targetType: tool
+      id: 1733462303828-a06ac7ea-5ecc-41bd-b0df-666eb01af424-1733462502080-target
+      source: '1733462303828'
+      sourceHandle: a06ac7ea-5ecc-41bd-b0df-666eb01af424
+      target: '1733462502080'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1733462180748-source-1733619786488-target
+      selected: false
+      source: '1733462180748'
+      sourceHandle: source
+      target: '1733619786488'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1733619786488-true-1733462204823-target
+      selected: false
+      source: '1733619786488'
+      sourceHandle: 'true'
+      target: '1733462204823'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1733619786488-false-1733620003686-target
+      selected: false
+      source: '1733619786488'
+      sourceHandle: 'false'
+      target: '1733620003686'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 54
+      id: '1733462180748'
+      position:
+        x: -90.872566582844
+        y: 5.068550408388788
+      positionAbsolute:
+        x: -90.872566582844
+        y: 5.068550408388788
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1733462787576.result#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 1825.791076973316
+        y: -294.6488937657168
+      positionAbsolute:
+        x: 1825.791076973316
+        y: -294.6488937657168
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 790.7758354319019
+        is_parallel: true
+        iterator_selector:
+        - sys
+        - files
+        output_selector:
+        - '1733462697092'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1733462204823start
+        title: イテレーション
+        type: iteration
+        width: 960
+      height: 791
+      id: '1733462204823'
+      position:
+        x: 545.0089315352291
+        y: -295.35703630229375
+      positionAbsolute:
+        x: 545.0089315352291
+        y: -295.35703630229375
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 960
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1733462204823start
+      parentId: '1733462204823'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 569.0089315352291
+        y: -227.35703630229375
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: in
+            id: a6a0489f-cd25-4346-a8fd-42d1c33ba4e6
+            value:
+            - image
+            varType: string
+            variable_selector:
+            - '1733462204823'
+            - item
+            - type
+          id: 'true'
+          logical_operator: or
+        - case_id: 0df6a8bd-3b34-4866-b33d-8d74893cc053
+          conditions:
+          - comparison_operator: in
+            id: a0b10f0e-02b6-40d3-be27-e2c22e805ad9
+            value:
+            - document
+            varType: string
+            variable_selector:
+            - '1733462204823'
+            - item
+            - type
+          id: 0df6a8bd-3b34-4866-b33d-8d74893cc053
+          logical_operator: and
+        - case_id: 03c190a7-0863-460b-9ecc-1462cb05f40b
+          conditions:
+          - comparison_operator: in
+            id: 11aa77f7-35f4-4b55-b256-f4f0cd5785eb
+            value:
+            - audio
+            varType: string
+            variable_selector:
+            - '1733462204823'
+            - item
+            - type
+          id: 03c190a7-0863-460b-9ecc-1462cb05f40b
+          logical_operator: and
+        - case_id: a06ac7ea-5ecc-41bd-b0df-666eb01af424
+          conditions:
+          - comparison_operator: in
+            id: aa456189-3616-44b6-85f2-7981faf345db
+            value:
+            - video
+            varType: string
+            variable_selector:
+            - '1733462204823'
+            - item
+            - type
+          id: a06ac7ea-5ecc-41bd-b0df-666eb01af424
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        iteration_id: '1733462204823'
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 270
+      id: '1733462303828'
+      parentId: '1733462204823'
+      position:
+        x: 92.82718699929228
+        y: 67.17281300070772
+      positionAbsolute:
+        x: 637.8361185345213
+        y: -228.18422330158603
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1733462204823'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 43f31ec7-b5b3-4f53-a4f3-658ceddde172
+          role: system
+          text: 添付画像について文字起こしして下さい。
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: true
+      height: 98
+      id: '1733462421307'
+      parentId: '1733462204823'
+      position:
+        x: 396
+        y: 96
+      positionAbsolute:
+        x: 941.0089315352291
+        y: -199.35703630229375
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        is_array_file: false
+        iteration_id: '1733462204823'
+        selected: false
+        title: テキスト抽出ツール
+        type: document-extractor
+        variable_selector:
+        - '1733462204823'
+        - item
+      height: 92
+      id: '1733462449509'
+      parentId: '1733462204823'
+      position:
+        x: 397
+        y: 202
+      positionAbsolute:
+        x: 942.0089315352291
+        y: -93.35703630229375
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1733462204823'
+        provider_id: fal
+        provider_name: fal
+        provider_type: builtin
+        selected: false
+        title: Wizper
+        tool_configurations:
+          chunk_level: segment
+          language: ja
+          task: transcribe
+          version: '3'
+        tool_label: Wizper
+        tool_name: wizper
+        tool_parameters:
+          audio_file:
+            type: variable
+            value:
+            - '1733462204823'
+            - item
+        type: tool
+      height: 168
+      id: '1733462502080'
+      parentId: '1733462204823'
+      position:
+        x: 394.8271869992923
+        y: 299.1550171663914
+      positionAbsolute:
+        x: 939.8361185345213
+        y: 3.797980864097667
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1733462204823'
+        selected: false
+        template: '申し訳ございません。
+
+          そのファイル形式はサポートしていません。
+
+          '
+        title: その他ファイル形式の処理
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1733462555556'
+      parentId: '1733462204823'
+      position:
+        x: 395.5
+        y: 493.5258354319019
+      positionAbsolute:
+        x: 940.5089315352291
+        y: 198.16879912960815
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1733462204823'
+        output_type: string
+        selected: false
+        title: 変数集約器
+        type: variable-aggregator
+        variables:
+        - - '1733462421307'
+          - text
+        - - '1733462449509'
+          - text
+        - - '1733462502080'
+          - text
+        - - '1733462555556'
+          - output
+      height: 175
+      id: '1733462697092'
+      parentId: '1733462204823'
+      position:
+        x: 700
+        y: 125.09155184280874
+      positionAbsolute:
+        x: 1245.008931535229
+        y: -170.265484459485
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(transcripts: list[str]) -> dict:\n    formatted_string = \"\
+          \\n===\\n\".join(transcripts)\n    return {'result': formatted_string}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: コード
+        type: code
+        variables:
+        - value_selector:
+          - '1733462204823'
+          - output
+          variable: transcripts
+      height: 54
+      id: '1733462787576'
+      position:
+        x: 1557.1244103066492
+        y: -294.6488937657168
+      positionAbsolute:
+        x: 1557.1244103066492
+        y: -294.6488937657168
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 2cafadd3-574c-440f-87e8-75596b6e985c
+            value: 文字起こし
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          - comparison_operator: not empty
+            id: 8fe34385-099a-453f-8957-42a0ee3e46e2
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 152
+      id: '1733619786488'
+      position:
+        x: 202.1807521200057
+        y: 5.068550408388788
+      positionAbsolute:
+        x: 202.1807521200057
+        y: 5.068550408388788
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'このアプリは文字起こし専用アプリです。
+
+          その他の操作はできません。
+
+
+          以下をご確認ください。
+
+          ・「文字起こし」と入力したかどうか
+
+          ・文字起こし対象ファイルを添付したかどうか'
+        desc: ''
+        selected: false
+        title: 回答 2
+        type: answer
+        variables: []
+      height: 164
+      id: '1733620003686'
+      position:
+        x: 545.0089315352291
+        y: 534.6429636977063
+      positionAbsolute:
+        x: 545.0089315352291
+        y: 534.6429636977063
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 114.59047533216676
+      y: 277.90899383004023
+      zoom: 0.8221669888519425
